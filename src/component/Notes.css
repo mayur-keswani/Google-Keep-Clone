@@ -1,0 +1,50 @@
+.main-section{
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: 130px;
+}
+@media(max-width:499px){
+	.main-section{
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: 10px;
+	}
+}
+.note-box{
+	width: 270px;
+	height: 180px;
+	border: 1px solid rgba(255,255,255,0.40);
+	box-shadow:2px 2px 2px rgba(217,210,200,0.31), 
+            -2px -2px 4px rgba(217,210,200,0.31);
+	border-radius: 5px;
+	margin-top:50px;
+	margin-left: 15px;
+	font-family: 'Poppins', sans-serif;
+	padding: 8px;
+	position: relative;
+}
+.note-box .note-title{
+	margin-bottom: 10px;
+}
+.note-footer{
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	float: right;
+	bottom: 0;
+	right: 0;
+}
+.btn-delete,.btn-edit{
+	background-color: #fff;
+	width: 70px;
+	height: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 5px;
+	border: 0px solid black;
+}
+.btn-delete:hover,.btn-edit:hover{
+	border: 1px solid rgb(167, 164, 164);
+	background-color: rgb(167, 164, 164);
+	outline: none;
+}

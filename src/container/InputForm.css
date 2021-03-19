@@ -1,0 +1,82 @@
+.container{
+	width: 100%;
+	height: auto;
+	text-align: center;
+	/* border: 1px solid black; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-left: 5px;
+	padding-right: 4px;
+	box-sizing: border-box;
+	margin-top:20px;
+}
+.input-group{
+	width: 600px;
+	height: auto;
+	text-align: center;
+	border: 1px solid rgba(255,255,255,0.20);
+	box-shadow:5px 5px 5px rgba(217,210,200,0.51), 
+            -3px -3px 5px rgba(217,210,200,0.51);
+	border-radius: 10px;
+	padding: 5px;
+
+	
+}
+.input-group .add_note{
+	width: 100%;
+	height: 40px;
+	margin: 0;
+	padding: 0;
+	border: 0px solid red;
+}
+.add_note::placeholder{
+	font-family: 'Merriweather Sans', sans-serif;
+	padding: 15px;
+}
+.input-group .add_note:focus{
+	outline: none;
+}
+.note_title{
+	width: 100%;
+	height: 40px;
+	margin: 3px;
+	padding: 0;
+	border: 0px solid red;
+}
+.note_content{
+	width: 100%;
+	height: 60px;
+	margin: 0;
+	padding: 0;
+	border: 0px solid red;
+
+	resize: none;
+}
+.note_title:focus , .note_content:focus{
+	outline: none;
+}
+.note_title::placeholder {
+	font-family: 'Merriweather Sans', sans-serif;
+	padding: 10px;
+}
+.note_content::placeholder{
+	font-family: 'Merriweather Sans', sans-serif;
+	padding-left: 10px;
+}
+
+.btn-close{
+	background-color: #fff;
+	width: 70px;
+	height: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 5px;
+	float: right;
+	border: 0px solid black;
+}
+.btn-close:hover{
+	border: 1px solid rgb(167, 164, 164);
+	background-color: rgb(167, 164, 164);
+	outline: none;
+}
