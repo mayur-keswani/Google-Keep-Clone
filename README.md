@@ -6,6 +6,7 @@ Allows user to quickly capture(note) what's on their mind for persoanl use. User
 ## Features
  - Add Note
  - Delete Note
+ - Update Note
 
 
 

@@ -1,0 +1,9 @@
+#main-section{
+	z-index: 100;
+	box-sizing: border-box;
+}
+#header-section{
+	z-index: 250;
+	box-sizing: border-box;
+	
+}

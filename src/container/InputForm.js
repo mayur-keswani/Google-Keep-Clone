@@ -27,6 +27,7 @@ const InputForm = () =>{
 			})
 
 			setNote({title:'',content:''})
+			// setInputVisible(false)
 			console.log(todoContext.todos)
 		}
 	}
