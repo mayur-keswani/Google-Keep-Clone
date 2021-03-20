@@ -1,6 +1,7 @@
 import React, {Fragment, useContext, useEffect, useState } from 'react'
 import NotesContext from '../../context/NotesContext'
 import {UPDATE_TODO} from '../../context/action.types'
+import Backdrop from '../UI/Backdrop/Backdrop'
 import './FullNote.css'
 
 
@@ -33,7 +34,7 @@ const FullNote = (props) =>{
 
 	return (
 		<Fragment>
-			{/* <Backdrop/> */}
+			<Backdrop/>
 			<div className="full_note" >
 			  <input type="text" className="noteTitle" value={fullNote.title} 
 			  	 onChange={(event)=> setFullNote({...fullNote,title:event.target.value})}></input>
