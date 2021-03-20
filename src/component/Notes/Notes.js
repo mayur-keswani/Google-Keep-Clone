@@ -4,7 +4,7 @@ import {REMOVE_TODO} from '../../context/action.types'
 
 import FullNote from '../Full_Note/FullNote'
 import './Notes.css'
-import Backdrop from '../UI/Backdrop/Backdrop';
+
 const Notes = () =>{
 	const notesContext = useContext(NotesContext)
 	// const [fullNoteVisible,setFullNoteVisible] = useState(false)

@@ -2,7 +2,7 @@ import React, {Fragment, useContext, useEffect, useState } from 'react'
 import NotesContext from '../../context/NotesContext'
 import {UPDATE_TODO} from '../../context/action.types'
 import './FullNote.css'
-import Backdrop from '../UI/Backdrop/Backdrop'
+
 
 const FullNote = (props) =>{
  const notesContext=useContext(NotesContext);
