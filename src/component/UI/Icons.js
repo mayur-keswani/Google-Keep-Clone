@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react'
-import {AiOutlineMenu , AiOutlineSearch} from 'react-icons/ai'
+import {AiOutlineMenu , AiOutlineSearch , AiOutlineBulb} from 'react-icons/ai'
 import {VscAdd} from 'react-icons/vsc'
 import {ImCross} from 'react-icons/im'
+import {RiDeleteBin6Line , RiInboxArchiveLine} from 'react-icons/ri'
 
 const Icons = (props) =>{
 	let icon=null;
@@ -14,10 +15,22 @@ const Icons = (props) =>{
 			icon=(<button className="btn-search"><AiOutlineSearch/></button>)	
 			break;
 		case "add":
-			icon=(<button className="btn-search"><VscAdd/></button>)
+			icon=(<button className="btn-add"><VscAdd/></button>)
 			break;
 		case "cross":{
-			icon=(<button className="btn-search"><ImCross/></button>)
+			icon=(<button className="btn-cross"><ImCross/></button>)
+			break;
+		}
+		case "notes":{
+			icon=(<AiOutlineBulb/>);
+			break;
+		}
+		case "bin":{
+			icon=(<RiDeleteBin6Line/>)
+			break;
+		}
+		case "archive":{
+			icon=(<RiInboxArchiveLine/>)
 			break;
 		}
 		default:

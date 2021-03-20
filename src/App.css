@@ -1,6 +1,12 @@
 #main-section{
 	z-index: 100;
 	box-sizing: border-box;
+	/* border: 1px solid blue; */
+	width: 90%;
+	margin: 0;
+	padding: 0;
+	float: right;
+	
 }
 #header-section{
 	z-index: 250;

@@ -6,11 +6,12 @@ import NavBar from './component/UI/NavBar'
 import InputForm from './container/InputForm'
 import Notes from './component/Notes/Notes'
 import './App.css'
+import Sidedrawer from './component/UI/Sidedrawer/Sidedrawer'
 const App =()=>{
 	const [todos,dispatch]=useReducer(TodoReducer,[])
 	return(
 		<Fragment>
-			<section id="main-section">
+			<section id="nav-section">
 				<NavBar/>
 			</section>
 			<NotesContext.Provider value={
@@ -19,8 +20,9 @@ const App =()=>{
 						dispatch:dispatch
 					}
 			}>
+			 <Sidedrawer/>
 			  <section id="main-section">
-				<InputForm/>
+			 	<InputForm/>
 				<Notes/>
 			  </section>
 			</NotesContext.Provider>
