@@ -7,7 +7,7 @@ Allows user to quickly capture(note) what's on their mind for persoanl use. User
  - Add Note
  - Delete Note
  - Update Note
-
+ - storing notes on localStorage
 
 
 

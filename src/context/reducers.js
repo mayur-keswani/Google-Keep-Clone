@@ -1,14 +1,23 @@
 import {ADD_TODO, UPDATE_TODO} from './action.types'
 import {REMOVE_TODO} from './action.types'
-
+import {ADD_PREV_TODOS} from './action.types'
  const  Reducer = (state,action) =>{
 
 	switch (action.type) {
-		case ADD_TODO:
+		case ADD_TODO:{
+			localStorage.setItem("todos",JSON.stringify([...state,action.payload]))
 			return [...state,action.payload]
+		}
 			
-		case REMOVE_TODO:
-			 return state.filter(todo=> todo.id.toString() !== action.payload )
+			
+		case REMOVE_TODO:{
+			// console.log(localStorage.getItem(todos[action.payload}]))
+			// localStorage.removeItem(`${todos[action.payload] }`)
+			let updatedState= state.filter(todo=> todo.id.toString() !== action.payload )
+			localStorage.setItem("todos",JSON.stringify(updatedState))
+			return updatedState;
+		}
+			 
 			
 		case UPDATE_TODO:{
 			 let updatingState={...state};
@@ -18,8 +27,12 @@ import {REMOVE_TODO} from './action.types'
 			let updatingNote={...updatingState[updatingNoteIndex]};
 			updatingNote={...action.payload}
 			state[updatingNoteIndex]=updatingNote;
-	
+	        
+			localStorage.setItem("todos",JSON.stringify(state))
 			return state
+		}
+		case ADD_PREV_TODOS:{
+			return [...state,...action.payload]
 		}
 		default:
 			return state

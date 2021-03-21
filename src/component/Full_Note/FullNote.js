@@ -16,7 +16,7 @@ const FullNote = (props) =>{
 			let updatingNote={...notesContext.todos[updatingNoteIndex]};
 			setFullNote({id:updatingNote.id, title:updatingNote.title , content:updatingNote.content});
 		}
-   })
+   },[])
 
    const updateNoteHandler = (id) =>{
 	let updated_note={
