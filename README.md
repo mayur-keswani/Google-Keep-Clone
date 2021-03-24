@@ -8,8 +8,8 @@ Allows user to quickly capture(note) what's on their mind for persoanl use. User
  - Delete Note
  - Update Note
  - storing notes on localStorage
-
-
+ - Read Deleted Notes
+ 
 
 
 ## _It is only for learning purpose._

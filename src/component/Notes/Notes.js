@@ -1,19 +1,25 @@
 import React, { Fragment , useContext, useState } from 'react'
 import NotesContext from '../../context/NotesContext';
-import {REMOVE_TODO} from '../../context/action.types'
+import {ADD_TODO, REMOVE_TODO} from '../../context/action.types'
 
 import FullNote from '../Full_Note/FullNote'
 import './Notes.css'
 
 const Notes = () =>{
 	const notesContext = useContext(NotesContext)
-	// const [fullNoteVisible,setFullNoteVisible] = useState(false)
+	
 	const [loadedNote,setLoadedNote] = useState({visible:false,note_id:null})
-
+    
 	const deleteNoteHandler =(id)=>{
+
+		let deletingNote=notesContext.todos.filter(note=> note.id.toString() === id.toString())
 		notesContext.dispatch({
 			type:REMOVE_TODO,
-			payload:id
+			payload:deletingNote[0]
+		})
+		notesContext.trashDispatch({
+			type:ADD_TODO,
+			payload:deletingNote[0]
 		})
 		setLoadedNote({visible:false,note_id:null})
 	}

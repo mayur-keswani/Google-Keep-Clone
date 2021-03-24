@@ -13,7 +13,7 @@ import {ADD_PREV_TODOS} from './action.types'
 		case REMOVE_TODO:{
 			// console.log(localStorage.getItem(todos[action.payload}]))
 			// localStorage.removeItem(`${todos[action.payload] }`)
-			let updatedState= state.filter(todo=> todo.id.toString() !== action.payload )
+			let updatedState= state.filter(todo=> todo.id.toString() !== action.payload.id.toString() )
 			localStorage.setItem("todos",JSON.stringify(updatedState))
 			return updatedState;
 		}

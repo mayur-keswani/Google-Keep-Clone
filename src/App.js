@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useReducer } from 'react'
-import TodoReducer from './context/reducers'
+
 import NotesContext from './context/NotesContext'
 
 import NavBar from './component/UI/NavBar'
@@ -7,7 +7,13 @@ import InputForm from './container/InputForm'
 import Notes from './component/Notes/Notes'
 import './App.css'
 import Sidedrawer from './component/UI/Sidedrawer/Sidedrawer'
+import { Route, Switch } from 'react-router'
+import Bin from './component/Deleted_Notes/Bin'
+import Archive from './component/Archive_Notes/Archive'
 
+import TodoReducer from './context/reducers'
+import TrashReducer from './context/trash-reducer'
+import ArchiveReducer from './context/archive-reducer'
 
 
 
@@ -26,7 +32,8 @@ const App =()=>{
 
 	
 	const [todos,dispatch]=useReducer(TodoReducer,[])
-	
+	const [deletedNotes,trashDispatch]=useReducer(TrashReducer,[])
+	const [archivedNotes,archiveDispatch]=useReducer(ArchiveReducer,[])
 	return(
 		<Fragment>
 			{/* {console.log(todos)} */}
@@ -36,14 +43,26 @@ const App =()=>{
 			<NotesContext.Provider value={
 					{	
 						todos:todos,
-						dispatch:dispatch
-					}
-			}>
-			 <Sidedrawer/>
-			  <section id="main-section">
-			 	<InputForm/>
-				<Notes/>
-			  </section>
+						dispatch:dispatch,
+						deletedNotes:deletedNotes,
+						trashDispatch:trashDispatch,
+						archivedNotes:archivedNotes,
+						archiveDispatch:archiveDispatch
+					}}>
+			 	<Sidedrawer/>
+			  	<section id="main-section">
+				  <Switch>
+				  	  <Route path="/archive" exact render={()=> <Fragment><Archive/></Fragment>}	
+								></Route>
+					  <Route path="/trash" exact render={()=> <Fragment><Bin/></Fragment>}	
+								></Route>
+
+					  <Route path="/" render={()=> <Fragment><InputForm/> <Notes/></Fragment>}	
+								></Route>
+
+				  </Switch>
+			 		
+			  	</section>
 			</NotesContext.Provider>
 			{/* <h1>Hello I am Body</h1> */}
 		</Fragment>
