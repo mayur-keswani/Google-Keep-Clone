@@ -27,6 +27,27 @@
 }
 .note-box .note-title{
 	margin-bottom: 10px;
+	width: 85%;
+	display: inline-block;
+	box-sizing: border-box;
+}
+.btn-unarchive{
+	box-sizing: border-box;
+	font-size: 1.1em;
+	width: 15%;
+	display: inline-block;
+	background-color: #fff;
+	height: 28px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 5px;
+	border: 0px solid black;
+}
+.btn-unarchive:hover{
+	box-sizing: border-box;
+	border: 1px solid rgb(167, 164, 164);
+	background-color: rgb(167, 164, 164);
+	outline: none;
 }
 .note-footer{
 	position: absolute;

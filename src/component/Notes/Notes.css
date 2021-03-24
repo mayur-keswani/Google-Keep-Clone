@@ -30,7 +30,9 @@
 	width: 85%;
 	display: inline-block;
 	box-sizing: border-box;
+	
 }
+
 .btn-pin{
 	box-sizing: border-box;
 	font-size: 1.1em;
@@ -43,6 +45,7 @@
 	border-radius: 5px;
 	border: 0px solid black;
 }
+
 .btn-pin:hover{
 	box-sizing: border-box;
 	border: 1px solid rgb(167, 164, 164);

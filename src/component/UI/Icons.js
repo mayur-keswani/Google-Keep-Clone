@@ -2,7 +2,8 @@ import React, { Fragment } from 'react'
 import {AiOutlineMenu , AiOutlineSearch , AiOutlineBulb , AiOutlinePushpin} from 'react-icons/ai'
 import {VscAdd} from 'react-icons/vsc'
 import {ImCross} from 'react-icons/im'
-import {RiDeleteBin6Line , RiInboxArchiveLine} from 'react-icons/ri'
+import {RiDeleteBin6Line , RiInboxArchiveLine , RiInboxUnarchiveLine , RiDeleteBin2Fill} from 'react-icons/ri'
+import {FaTrashRestoreAlt} from 'react-icons/fa'
 
 const Icons = (props) =>{
 	let icon=null;
@@ -35,6 +36,18 @@ const Icons = (props) =>{
 		}
 		case "pin":{
 			icon=(<AiOutlinePushpin/>)
+			break;
+		}
+		case "unarchive":{
+			icon=(<RiInboxUnarchiveLine/>)
+			break;
+		}
+		case "restore":{
+			icon=(<FaTrashRestoreAlt/>)
+			break;
+		}
+		case "delete-forever":{
+			icon=(<RiDeleteBin2Fill/>)
 			break;
 		}
 		default:

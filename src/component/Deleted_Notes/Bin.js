@@ -2,7 +2,8 @@ import React, { Fragment , useContext } from 'react'
 import './Bin.css'
 
 import NotesContext from '../../context/NotesContext'
-import { REMOVE_TODO } from '../../context/action.types'
+import { ADD_TODO, REMOVE_TODO } from '../../context/action.types'
+import Icons from '../UI/Icons'
 const Bin = () =>{
 	const notesContext = useContext(NotesContext)
 	const deleteNoteHandler = (id) =>{
@@ -13,6 +14,17 @@ const Bin = () =>{
 		})
 
 	}
+	const restoreNoteHandler = (id) =>{
+		let restoringNote=notesContext.deletedNotes.filter(note=> note.id.toString() === id.toString())
+		notesContext.dispatch({
+			type:ADD_TODO,
+			payload:restoringNote[0]
+		})
+		notesContext.trashDispatch({
+			type:REMOVE_TODO,
+			payload:restoringNote[0]
+		})
+	}
 	// console.log(notesContext.deletedNotes)
 	let notes=(<h2>No Notes Yet</h2>)
 	notes=notesContext.deletedNotes.map(note=>{
@@ -20,7 +32,8 @@ const Bin = () =>{
 					<div className="note-title"><h4>{note.title}</h4></div>
 					<div className="note-content">{note.content}</div>
 					<div className="note-footer">
-						<button  className="btn-delete" onClick={()=>deleteNoteHandler(note.id)} >DELETE</button>
+						<button  className="btn-restore" onClick={()=>restoreNoteHandler(note.id)} ><Icons type="restore"/></button>
+						<button  className="btn-delete-forever" onClick={()=>deleteNoteHandler(note.id)} ><Icons type="delete-forever"/></button>
 					</div>
 				</div>
 				)

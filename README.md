@@ -21,8 +21,8 @@ uuid
  - Add Notes 
  - Delete Notes 
  - Update Notes
- - Archieve Notes
- - Read RecentlyDeleted Notes
+ - Archieve - Unarchive Notes
+ - Read RecentlyDeleted Notes even you can Restore them
  - Storing notes on localStorage
 
  ## Need help?
