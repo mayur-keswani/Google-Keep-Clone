@@ -14,6 +14,7 @@ import Archive from './component/Archive_Notes/Archive'
 import TodoReducer from './context/reducers'
 import TrashReducer from './context/trash-reducer'
 import ArchiveReducer from './context/archive-reducer'
+import { ADD_PREV_TODOS } from './context/action.types'
 
 
 
@@ -22,29 +23,14 @@ const App =()=>{
 	// const [defaultTodos,setDefaultTodos]=useState([])	 
 	useEffect(()=>{
 		let localTodos=localStorage.getItem('todos');
-		let existingArchivedNotes = localStorage.getItem('archivedNotes')
-		let localDeletedNotes = localStorage.getItem('localDeletedNotes')
 
 		if(localTodos){
 			dispatch({
-				type:"ADD_PREV_TODOS",
+				type:ADD_PREV_TODOS,
 				payload:JSON.parse(localTodos)
 			})
 		}
 
-		if(existingArchivedNotes){
-			archiveDispatch({
-				type:"ADD_PREV_TODOS",
-				payload:JSON.parse(existingArchivedNotes)
-			})
-		}
-
-		if(localDeletedNotes){
-			trashDispatch({
-				type:"ADD_PREV_TODOS",
-				payload:JSON.parse(localDeletedNotes)
-			})
-		}
 	},[])
 
 	

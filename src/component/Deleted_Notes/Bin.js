@@ -1,11 +1,20 @@
-import React, { Fragment , useContext } from 'react'
+import React, { Fragment , useContext, useEffect } from 'react'
 import './Bin.css'
 
 import NotesContext from '../../context/NotesContext'
-import { ADD_TODO, REMOVE_TODO } from '../../context/action.types'
+import { ADD_PREV_TODOS, ADD_TODO, REMOVE_TODO } from '../../context/action.types'
 import Icons from '../UI/Icons'
 const Bin = () =>{
-	const notesContext = useContext(NotesContext)
+	const notesContext = useContext(NotesContext);
+	useEffect(()=>{
+		let localDeletedNotes = localStorage.getItem('localDeletedNotes')
+		if(localDeletedNotes){
+			notesContext.trashDispatch({
+				type:ADD_PREV_TODOS,
+				payload:JSON.parse(localDeletedNotes)
+			})
+		}
+	},[])
 	const deleteNoteHandler = (id) =>{
 		let deletingNote=notesContext.deletedNotes.filter(note=> note.id.toString() === id.toString())
 		notesContext.trashDispatch({
