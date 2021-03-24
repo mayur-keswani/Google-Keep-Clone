@@ -1,5 +1,6 @@
 import React, { Fragment , useContext, useState } from 'react'
 import NotesContext from '../../context/NotesContext';
+import Icons from '../UI/Icons'
 import {ADD_TODO, REMOVE_TODO} from '../../context/action.types'
 
 import FullNote from '../Full_Note/FullNote'
@@ -10,8 +11,18 @@ const Notes = () =>{
 	
 	const [loadedNote,setLoadedNote] = useState({visible:false,note_id:null})
     
+	const archiveNote = (id) =>{
+		let pinNote=notesContext.todos.filter(note=> note.id.toString() === id.toString())
+		notesContext.dispatch({
+			type:REMOVE_TODO,
+			payload:pinNote[0]
+		})
+		notesContext.archiveDispatch({
+			type:ADD_TODO,
+			payload:pinNote[0]
+		})
+	}
 	const deleteNoteHandler =(id)=>{
-
 		let deletingNote=notesContext.todos.filter(note=> note.id.toString() === id.toString())
 		notesContext.dispatch({
 			type:REMOVE_TODO,
@@ -35,6 +46,7 @@ const Notes = () =>{
 	notes=notesContext.todos.map(note=>{
 		return  (<div className="note-box" key="note.id">
 					<div className="note-title"><h4>{note.title}</h4></div>
+					<button className="btn-pin" onClick={()=>archiveNote(note.id)}><Icons type="archive"/></button>
 					<div className="note-content">{note.content}</div>
 					<div className="note-footer">
 						<button  className="btn-edit" onClick={()=>loadFullNote(note.id)}>Edit</button>

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import {AiOutlineMenu , AiOutlineSearch , AiOutlineBulb} from 'react-icons/ai'
+import {AiOutlineMenu , AiOutlineSearch , AiOutlineBulb , AiOutlinePushpin} from 'react-icons/ai'
 import {VscAdd} from 'react-icons/vsc'
 import {ImCross} from 'react-icons/im'
 import {RiDeleteBin6Line , RiInboxArchiveLine} from 'react-icons/ri'
@@ -31,6 +31,10 @@ const Icons = (props) =>{
 		}
 		case "archive":{
 			icon=(<RiInboxArchiveLine/>)
+			break;
+		}
+		case "pin":{
+			icon=(<AiOutlinePushpin/>)
 			break;
 		}
 		default:

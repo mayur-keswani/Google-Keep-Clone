@@ -7,7 +7,10 @@ const archiveReducer = (state,action) =>{
 		case ADD_TODO:
 			return [...state,action.payload]
 		case REMOVE_TODO:
-			return [...state,action.payload]
+			{
+				let updatedState= state.filter(todo=> todo.id.toString() !== action.payload.id.toString() )
+				return updatedState;
+			}
 		
 		default:
 			break;

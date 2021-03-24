@@ -1,5 +1,6 @@
 import React, { Fragment , useContext } from 'react'
 import './Bin.css'
+
 import NotesContext from '../../context/NotesContext'
 import { REMOVE_TODO } from '../../context/action.types'
 const Bin = () =>{
