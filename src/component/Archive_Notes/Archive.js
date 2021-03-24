@@ -6,6 +6,9 @@ import { ADD_TODO, REMOVE_TODO } from '../../context/action.types'
 import Icons from '../UI/Icons'
 const Archive = () =>{
 	const notesContext = useContext(NotesContext)
+
+
+
 	const deleteNoteHandler = (id) =>{
 		let deletingNote=notesContext.archivedNotes.filter(note=> note.id.toString() === id.toString())
 		notesContext.archiveDispatch({

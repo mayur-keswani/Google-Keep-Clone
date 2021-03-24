@@ -23,7 +23,7 @@ uuid
  - Update Notes
  - Archieve - Unarchive Notes
  - Read RecentlyDeleted Notes even you can Restore them
- - Storing notes on localStorage
+ - Storing notes/deleted-notes/archived-notes on localStorage
 
  ## Need help?
  ```Javascript
