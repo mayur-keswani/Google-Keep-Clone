@@ -29,26 +29,76 @@
 	margin-bottom: 10px;
 }
 .note-footer{
+	margin: 0px;
+	display: flex !important;
+	align-items:center;
+	text-align: right !important;
+	justify-content: center !important;
+	flex-direction: row !important;
+	/* border: 1px solid blue; */
+	/* width: 90px; */
+	box-sizing: border-box;
+	width: 100%;
+
+}
+.tooltiptext1{
+	visibility: hidden;
+	width: 120px;
+	background-color:#c1c1c1;
+	color: #363636;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+  
+	/* Position the tooltip */
 	position: absolute;
-	display: flex;
-	flex-direction: row;
-	float: right;
-	bottom: 0;
-	right: 0;
+	top: 105%;
+	left: 10%;
+	z-index: 1;
+}
+.tooltiptext2{
+	visibility: hidden;
+	width: 120px;
+	background-color:#c1c1c1;
+	color: #363636;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+  
+	/* Position the tooltip */
+	position: absolute;
+	top: 105%;
+	left: 50%;
+	z-index: 1;
 }
 .btn-delete-forever,.btn-restore{
 	background-color: #fff;
 	width: 40px;
-	height: 25px;
+	height: 30px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	border-radius: 5px;
-	border: 0px solid black;
+	border: 1px solid black;
 	font-size: 1.2em;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 2px ;
+	
 }
 .btn-delete-forever:hover , .btn-restore:hover{
 	border: 1px solid rgb(167, 164, 164);
 	background-color: rgb(167, 164, 164);
 	outline: none;
-	font-size: 1.2em;
+	
+
 }
+
+.btn-restore:hover ~.tooltiptext1 {
+	visibility: visible;
+  }
+.btn-delete-forever:hover ~.tooltiptext2 {
+	visibility: visible;
+  }
+

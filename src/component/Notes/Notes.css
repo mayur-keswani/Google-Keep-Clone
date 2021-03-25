@@ -44,14 +44,32 @@
 	padding-bottom: 5px;
 	border-radius: 5px;
 	border: 0px solid black;
+	position: relative;
 }
-
+.tooltiptext{
+	visibility: hidden;
+	width: 120px;
+	background-color:#c1c1c1;
+	color: #363636;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+  
+	/* Position the tooltip */
+	position: absolute;
+	top: -15%;
+	left: 60%;
+	z-index: 1;
+}
 .btn-pin:hover{
 	box-sizing: border-box;
 	border: 1px solid rgb(167, 164, 164);
 	background-color: rgb(167, 164, 164);
 	outline: none;
 }
+.btn-pin:hover ~.tooltiptext {
+	visibility: visible;
+  }
 .note-content{
 	width: 100%;
 	display: block;

@@ -47,6 +47,7 @@ const Notes = () =>{
 		return  (<div className="note-box" key="note.id">
 					<div className="note-title"><h4>{note.title}</h4></div>
 					<button className="btn-pin" onClick={()=>archiveNote(note.id)}><Icons type="archive"/></button>
+					 <span class="tooltiptext">Archieve</span>
 					<div className="note-content">{note.content}</div>
 					<div className="note-footer">
 						<button  className="btn-edit" onClick={()=>loadFullNote(note.id)}>Edit</button>

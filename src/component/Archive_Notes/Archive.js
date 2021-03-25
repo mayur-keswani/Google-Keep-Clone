@@ -37,6 +37,7 @@ const Archive = () =>{
 		return  (<div className="note-box" key="note.id">
 					<div className="note-title"><h4>{note.title}</h4></div>
 					<button className="btn-unarchive" onClick={()=>unarchiveHandler(note.id)}><Icons type="unarchive"/></button>
+					<span class="tooltiptext">Unarchieve</span>
 					<div className="note-content">{note.content}</div>
 					<div className="note-footer">
 						<button  className="btn-delete" onClick={()=>deleteNoteHandler(note.id)} >DELETE</button>

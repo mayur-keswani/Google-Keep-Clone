@@ -33,8 +33,10 @@ const Bin = () =>{
 					<div className="note-title"><h4>{note.title}</h4></div>
 					<div className="note-content">{note.content}</div>
 					<div className="note-footer">
-						<button  className="btn-restore" onClick={()=>restoreNoteHandler(note.id)} ><Icons type="restore"/></button>
-						<button  className="btn-delete-forever" onClick={()=>deleteNoteHandler(note.id)} ><Icons type="delete-forever"/></button>
+						<span  className="btn-restore" onClick={()=>restoreNoteHandler(note.id)} ><Icons type="restore"/></span>
+						<span class="tooltiptext1">restore</span>
+						<span  className="btn-delete-forever" onClick={()=>deleteNoteHandler(note.id)} ><Icons type="delete-forever"/></span>
+						<span class="tooltiptext2">delete forever</span>
 					</div>
 				</div>
 				)
