@@ -1,16 +1,11 @@
 .main-section{
 	display: flex;
 	flex-wrap: wrap;
-	margin-left: 130px;
+	margin-left: 60px;
+	/* border: 1px dotted blue; */
 	
 }
-@media(max-width:499px){
-	.main-section{
-		display: flex;
-		flex-wrap: wrap;
-		margin-left: 10px;
-	}
-}
+
 .note-box{
 	width: 270px;
 	height: 180px;
@@ -25,6 +20,7 @@
 	z-index: 100;
 	position: relative;
 }
+
 .note-box .note-title{
 	margin-bottom: 10px;
 	width: 85%;
@@ -70,6 +66,48 @@
 .btn-pin:hover ~.tooltiptext {
 	visibility: visible;
   }
+  @media(max-width:499px){
+	.main-section{
+		display: flex;
+		justify-content: center !important;
+		flex-wrap: wrap;
+		margin-left: 0px !important;
+		padding-left: 0px;
+		/* border: 1px solid red; */
+	}
+	.note-box{
+		width: 180px !important;
+		height: 130px !important;
+		/* margin-left: 15px !important; */
+		/* border: 1px dotted red !important; */
+		box-sizing: border-box !important;
+	}
+	.tooltiptext{
+		top: -20% !important;
+		left: 50% !important;
+	}
+  }
+  @media(min-width:499px) and (max-width:768px){
+	.main-section{
+		display: flex;
+		/* justify-content: center; */
+		flex-wrap: wrap;
+		margin-left: 0px !important;
+		padding-left: 5px;
+		/* border: 1px solid red; */
+	}
+	.note-box{
+		width: 180px !important;
+		height: 130px !important;
+		/* margin-left: 15px !important; */
+		/* border: 1px dotted red !important; */
+		box-sizing: border-box !important;
+	}
+	.tooltiptext{
+		top: -20% !important;
+		left: 50% !important;
+	}
+}
 .note-content{
 	width: 100%;
 	display: block;

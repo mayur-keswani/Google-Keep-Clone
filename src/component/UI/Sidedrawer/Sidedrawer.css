@@ -1,6 +1,6 @@
 .sidedrawer{
 	height: 100vh;
-	width: 10%;
+	width: 15%;
 	/* border:1px solid red; */
 	float: left;
 	margin: 0;
@@ -10,6 +10,19 @@
 	justify-content: center;
 	padding-top: 20px;
 	padding-left: 15px;
+	align-items: center !important;
+}
+@media(max-width:499px){
+	.sidedrawer{
+		padding-left: 7px;
+		/* border: 1px dotted red; */
+		position: fixed;
+		top:25%;
+		left: 0%;
+		/* transform: translateY(-50%); */
+		margin: 0px;
+		
+	}
 }
 .btn-notes,.btn-archive,.btn-bin{
 	width: 40px;
@@ -25,6 +38,7 @@
 	
 	margin-top: 15px;
 	-webkit-text-stroke: 0px #fff;
+	box-sizing: border-box;
 
 }
 .btn-notes:hover,.btn-archive:hover,.btn-bin:hover{

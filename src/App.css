@@ -2,8 +2,9 @@
 	z-index: 100;
 	box-sizing: border-box;
 	/* border: 1px solid blue; */
-	width: 90%;
+	width: 85%;
 	margin: 0;
+	
 	padding: 0;
 	float: right;
 	
@@ -11,5 +12,4 @@
 #header-section{
 	z-index: 250;
 	box-sizing: border-box;
-	
 }
