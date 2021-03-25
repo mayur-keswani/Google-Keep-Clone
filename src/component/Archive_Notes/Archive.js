@@ -1,23 +1,12 @@
-import React, { Fragment , useContext, useEffect } from 'react'
+import React, { Fragment , useContext} from 'react'
 import './Archive.css'
 
 import NotesContext from '../../context/NotesContext'
-import { ADD_PREV_TODOS, ADD_TODO, REMOVE_TODO } from '../../context/action.types'
+import { ADD_TODO, REMOVE_TODO } from '../../context/action.types'
 import Icons from '../UI/Icons'
 const Archive = () =>{
 	const notesContext = useContext(NotesContext)
-	useEffect(()=>{
-		let existingArchivedNotes = localStorage.getItem('archivedNotes');
-		if(existingArchivedNotes){
-			notesContext.archiveDispatch({
-				type:ADD_PREV_TODOS,
-				payload:JSON.parse(existingArchivedNotes)
-			})
-		};
-
-	},[])
-
-
+		
 	const deleteNoteHandler = (id) =>{
 		let deletingNote=notesContext.archivedNotes.filter(note=> note.id.toString() === id.toString())
 		notesContext.archiveDispatch({

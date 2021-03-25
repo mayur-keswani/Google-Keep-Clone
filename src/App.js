@@ -23,11 +23,27 @@ const App =()=>{
 	// const [defaultTodos,setDefaultTodos]=useState([])	 
 	useEffect(()=>{
 		let localTodos=localStorage.getItem('todos');
+		let existingArchivedNotes = localStorage.getItem('archivedNotes');
+		let localDeletedNotes = localStorage.getItem('localDeletedNotes')
 
 		if(localTodos){
 			dispatch({
 				type:ADD_PREV_TODOS,
 				payload:JSON.parse(localTodos)
+			})
+		}
+
+		if(existingArchivedNotes){
+			archiveDispatch({
+				type:ADD_PREV_TODOS,
+				payload:JSON.parse(existingArchivedNotes)
+			})
+		};
+
+		if(localDeletedNotes){
+			trashDispatch({
+				type:ADD_PREV_TODOS,
+				payload:JSON.parse(localDeletedNotes)
 			})
 		}
 
@@ -60,7 +76,7 @@ const App =()=>{
 					  <Route path="/trash" exact render={()=> <Fragment><Bin/></Fragment>}	
 								></Route>
 
-					  <Route path="/" render={()=> <Fragment><InputForm/> <Notes/></Fragment>}	
+					  <Route path="/" exact render={()=> <Fragment><InputForm/> <Notes/></Fragment>}	
 								></Route>
 
 				  </Switch>
