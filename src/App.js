@@ -1,26 +1,27 @@
-import React, { Fragment, useEffect, useReducer } from 'react'
+import React, { Fragment ,useState,useEffect, useReducer } from 'react'
 
 import NotesContext from './context/NotesContext'
 
-import NavBar from './component/UI/NavBar'
-import InputForm from './container/InputForm'
-import Notes from './component/Notes/Notes'
+
 import './App.css'
-import Sidedrawer from './component/UI/Sidedrawer/Sidedrawer'
 import { Route, Switch } from 'react-router'
 import Bin from './component/Deleted_Notes/Bin'
 import Archive from './component/Archive_Notes/Archive'
+import NavBar from './component/UI/NavBar'
+import InputForm from './container/InputForm'
+import Notes from './component/Notes/Notes'
 
 import TodoReducer from './context/reducers'
 import TrashReducer from './context/trash-reducer'
 import ArchiveReducer from './context/archive-reducer'
 import { ADD_PREV_TODOS } from './context/action.types'
+import Sidedrawer from './component/UI/Sidedrawer/Sidedrawer'
 
 
 
 const App =()=>{
 	
-	// const [defaultTodos,setDefaultTodos]=useState([])	 
+	 const [triggerSidedrawer,triggerSidedrawerHandler]=useState(true)	 
 	useEffect(()=>{
 		let localTodos=localStorage.getItem('todos');
 		let existingArchivedNotes = localStorage.getItem('archivedNotes');
@@ -57,7 +58,7 @@ const App =()=>{
 		<Fragment>
 			{/* {console.log(todos)} */}
 			<section id="nav-section">
-				<NavBar/>
+				<NavBar triggerSidedrawer={()=>triggerSidedrawerHandler((prevState)=> !prevState)}/>
 			</section>
 			<NotesContext.Provider value={
 					{	
@@ -68,7 +69,8 @@ const App =()=>{
 						archivedNotes:archivedNotes,
 						archiveDispatch:archiveDispatch
 					}}>
-			 	<Sidedrawer/>
+			 	<Sidedrawer 
+				 	show={triggerSidedrawer} />
 			  	<section id="main-section">
 				  <Switch>
 				  	  <Route path="/archive" exact render={()=> <Fragment><Archive/></Fragment>}	

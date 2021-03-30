@@ -5,10 +5,10 @@ import './NavBar.css'
 import Logo from './Logo'
 import Icons from './Icons'
 
-const NavBar =()=>{
+const NavBar =({triggerSidedrawer})=>{
 	return(
 		<div id="navbar">
-			<section id="menu">
+			<section id="menu" onClick={triggerSidedrawer}>
 				<Icons type="menu"/>
 			</section>
 			<Logo/>

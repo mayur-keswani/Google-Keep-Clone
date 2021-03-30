@@ -18,12 +18,22 @@
 }
 .btn-menu{
 	background-color: #fff;
+	width: 40px;
+	height: 40px;
 	font-size: 1em;
 	margin-left: 20px;
 	border-width: 0px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .btn-menu:focus{
 	outline: none;
+}
+.btn-menu:hover{
+	border: 1px solid black;
+	border-radius: 100%;
+	background-color: rgb(245, 208, 128);
 }
 .btn-search{
 	background-color: #fff;

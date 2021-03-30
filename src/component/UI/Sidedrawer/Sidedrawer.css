@@ -11,6 +11,7 @@
 	padding-top: 20px;
 	padding-left: 15px;
 	align-items: center !important;
+	transition: transform 0.4s ease-in;
 }
 @media(max-width:499px){
 	.sidedrawer{
@@ -35,11 +36,16 @@
 	align-items: center;
 	justify-content: center;
 	background-color: #fff;
+	align-items: center;
 	
 	margin-top: 15px;
 	-webkit-text-stroke: 0px #fff;
 	box-sizing: border-box;
+	
 
+}
+.btn-notes:link,.btn-archive:link,.btn-bin:link{
+	color: black;
 }
 .btn-notes:hover,.btn-archive:hover,.btn-bin:hover{
 	border: 1px solid black;
