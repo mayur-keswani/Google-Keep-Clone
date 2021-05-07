@@ -1,9 +1,9 @@
 import React, {Fragment, useContext, useEffect, useState } from 'react'
-import NotesContext from '../../context/NotesContext'
-import {UPDATE_TODO} from '../../context/action.types'
 import Backdrop from '../UI/Backdrop/Backdrop'
 import './FullNote.css'
-
+// context-api stuff
+import NotesContext from '../../context/NotesContext'
+import {UPDATE_NOTE} from '../../context/NotesReducers/action.types'
 
 const FullNote = (props) =>{
  const notesContext=useContext(NotesContext);
@@ -26,7 +26,7 @@ const FullNote = (props) =>{
 	}
 
 	notesContext.dispatch({
-		type:UPDATE_TODO,
+		type:UPDATE_NOTE,
 		payload:updated_note
 	})
 	props.offLoadFullNote();

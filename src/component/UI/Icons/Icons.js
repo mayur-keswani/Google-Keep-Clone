@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import {AiOutlineMenu , AiOutlineSearch , AiOutlineBulb , AiOutlinePushpin} from 'react-icons/ai'
-import {VscAdd} from 'react-icons/vsc'
-import {ImCross} from 'react-icons/im'
+import {ImCross , ImCheckboxUnchecked} from 'react-icons/im'
 import {RiDeleteBin6Line , RiInboxArchiveLine , RiInboxUnarchiveLine , RiDeleteBin2Fill} from 'react-icons/ri'
-import {FaTrashRestoreAlt} from 'react-icons/fa'
+import {FaTrashRestoreAlt , FaRegCheckSquare } from 'react-icons/fa'
+import {MdAdd} from 'react-icons/md'
 
 const Icons = (props) =>{
 	let icon=null;
@@ -16,7 +16,7 @@ const Icons = (props) =>{
 			icon=(<button className="btn-search"><AiOutlineSearch/></button>)	
 			break;
 		case "add":
-			icon=(<button className="btn-add"><VscAdd/></button>)
+			icon=(<MdAdd/>)
 			break;
 		case "cross":{
 			icon=(<button className="btn-cross"><ImCross/></button>)
@@ -48,6 +48,14 @@ const Icons = (props) =>{
 		}
 		case "delete-forever":{
 			icon=(<RiDeleteBin2Fill/>)
+			break;
+		}
+		case "check":{
+			icon=(<FaRegCheckSquare/>)
+			break;
+		}
+		case "uncheck":{
+			icon=(<ImCheckboxUnchecked/>)
 			break;
 		}
 		default:

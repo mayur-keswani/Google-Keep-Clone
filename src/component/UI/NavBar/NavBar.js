@@ -1,9 +1,8 @@
 import React from 'react'
 import './NavBar.css'
 
-
-import Logo from './Logo'
-import Icons from './Icons'
+import Logo from '../Logo/Logo'
+import Icons from '../Icons/Icons'
 
 const NavBar =({triggerSidedrawer})=>{
 	return(

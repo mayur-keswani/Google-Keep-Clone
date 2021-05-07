@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
-import Icons from '../Icons'
+import Icons from '../Icons/Icons'
 import './Sidedrawer.css'
 
 const Sidedrawer = ({show,triggerSidedrawer}) =>{
@@ -13,7 +13,6 @@ const Sidedrawer = ({show,triggerSidedrawer}) =>{
 						<Icons type="notes"></Icons>
 					</span>
 				</NavLink>
-
 
 				<NavLink to="/archive">
 					<span className="btn-archive" >
