@@ -37,13 +37,12 @@ const Bin = () =>{
 					 	? 
 						 note.content.map(elem=>
 							<div className="todo_task" key={elem.id}>  
-				   				<span className="task-complete mt-5"><Icons type="check"/></span>	
-								<input type="text" 
+				   				
+								<span 
 				  		 			className="todo_content" 
-									style={{backgroundColor:"white"}}
-				  		 			value={elem.task}
-									readOnly
-						 		/>  	
+									style={{textDecoration:(elem.isCompleted)?"line-through":"none"}}>
+									{elem.task}
+								</span>	
 							 	
 				   			</div>
 							)
@@ -53,9 +52,9 @@ const Bin = () =>{
 					
 					<div className="note-footer">
 						<span  className="btn-restore" onClick={()=>restoreNoteHandler(note.id)} ><Icons type="restore"/></span>
-						<span class="tooltiptext1">restore</span>
+						<span className="tooltiptext1">restore</span>
 						<span  className="btn-delete-forever" onClick={()=>deleteNoteHandler(note.id)} ><Icons type="delete-forever"/></span>
-						<span class="tooltiptext2">delete forever</span>
+						<span className="tooltiptext2">delete forever</span>
 					</div>
 				</div>
 				)

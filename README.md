@@ -18,10 +18,9 @@ react-icons
 axios
 uuid
 ## Features 🌟
- - Add Notes 
- - Delete Notes 
- - Update Notes
- - Archieve - Unarchive Notes
+ - Add/Delete/Update Notes
+ - Add/Delete/Update Todos
+ - Archieve - Unarchive Notes/Todos
  - Read RecentlyDeleted Notes even you can Restore them
  - Storing notes/deleted-notes/archived-notes on localStorage
  - Responsive layout 

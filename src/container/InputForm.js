@@ -41,7 +41,6 @@ const InputForm = () =>{
 
 
 	const onAddTaskHandler = async () =>{
-		console.log(todoTask)
 		let payload={id:v4(),isCompleted:false,task:todoTask}
 		// await setTodo(
 		// 	 {...todo,tasks:[...todo.tasks,payload]

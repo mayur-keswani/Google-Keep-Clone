@@ -78,8 +78,8 @@
 		/* border: 1px solid red; */
 	}
 	.note-box{
-		width: 180px !important;
-		height: 130px !important;
+		width: 210px !important;
+		height: 200px !important;
 		/* margin-left: 15px !important; */
 		/* border: 1px dotted red !important; */
 		box-sizing: border-box !important;
@@ -163,9 +163,9 @@
 }
 .todo_content{
 	width: 80%;
-	height: 1.0rem;
+	height: 0.7rem;
 	margin: 2px 10px 10px 7px;
-	padding: 0.2rem;
+	padding: 0.1rem;
 	border-radius:5px;
 	background-color:#dfe6e9;
 	box-sizing:border-box;
