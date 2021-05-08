@@ -106,7 +106,11 @@ const Notes = () =>{
 	})
 	return(
 		<Fragment>
-		 {loadedNote.visible?<FullNote id={loadedNote.note_id}  offLoadFullNote={offLoadFullNote}/>:null}
+		 {loadedNote.visible?
+		 	<FullNote id={loadedNote.note_id}  
+			 		offLoadFullNote={offLoadFullNote}
+					onTaskComplete ={(noteID,elemID)=>onTaskComplete(noteID,elemID)}
+					 />:null}
 		
 		  <div className="main-section">
 			{notes}

@@ -32,16 +32,22 @@
 	margin: 0;
 	box-sizing: border-box;
 }
-.noteContent{
+.content-section{
 	border: 0px solid black;
 	width: 100%;
 	height: 300px;
 	resize: none;
 	font-size: 1.3em;
 	margin: 0px;
-	padding-top: 10px;
-	padding-left: 6px;
+	padding: 10px  6px 0px 6px;
+	overflow-y: scroll;
 	box-sizing: border-box;
+}
+.content-section .noteContent{
+	width: 100%;
+	height: 80%;
+	font-size: 1.0em;
+	resize: none;
 }
 .noteTitle:focus,.noteContent:focus{
 	outline: none;

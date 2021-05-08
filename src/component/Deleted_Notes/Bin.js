@@ -29,10 +29,11 @@ const Bin = () =>{
 	}
 	// console.log(notesContext.deletedNotes)
 	let notes=(<h2>No Notes Yet</h2>)
+	
 	notes=notesContext.deletedNotes.map(note=>{
 		return  (<div className="note-box" key="note.id">
 					<div className="note-title"><h4>{note.title}</h4></div>
-					
+					<div className="note-content" >		
 					 {(note.criterion==="TODO")
 					 	? 
 						 note.content.map(elem=>
@@ -47,13 +48,13 @@ const Bin = () =>{
 				   			</div>
 							)
 					 	:
-						 <div className="note-content">{note.content}</div>
+						 note.content
 					 }
-					
+					 </div>
 					<div className="note-footer">
-						<span  className="btn-restore" onClick={()=>restoreNoteHandler(note.id)} ><Icons type="restore"/></span>
+						<button  className="btn-restore" onClick={()=>restoreNoteHandler(note.id)} ><Icons type="restore"/></button>
 						<span className="tooltiptext1">restore</span>
-						<span  className="btn-delete-forever" onClick={()=>deleteNoteHandler(note.id)} ><Icons type="delete-forever"/></span>
+						<button  className="btn-delete-forever" onClick={()=>deleteNoteHandler(note.id)} ><Icons type="delete-forever"/></button>
 						<span className="tooltiptext2">delete forever</span>
 					</div>
 				</div>

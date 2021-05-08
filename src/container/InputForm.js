@@ -53,7 +53,6 @@ const InputForm = () =>{
 			}
 		)	
 		setTodoTask("")
-		
 	}
 
 	const submitTodoHandler= async(e)=>{
