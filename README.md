@@ -29,7 +29,7 @@ uuid
  ## Need help?
  ```Javascript
   if (needHelp === true) {
-     var emailId = "guptamiley3012@gmail.com";
+     var emailId = "mayurkeswani2001@gmail.com";
      // email is the best way to reach out to me.
      sendEmail(emailId);
   }
