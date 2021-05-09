@@ -56,7 +56,7 @@ const InputForm = () =>{
 	}
 
 	const submitTodoHandler= async(e)=>{
-		await onAddTaskHandler()
+		// await onAddTaskHandler()
 	
 		let tasks;
 		if(todoTask)

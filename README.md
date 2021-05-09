@@ -4,6 +4,7 @@ Keep Clone is clone of Google Keep _Free Note-taking service_.
 Allows user to quickly capture(note) what's on their mind for persoanl use. User can also make _Todo  Checklist_.
 >site : https://mayur-keep-clone.netlify.app/
 
+![](Animation.gif)
 ## To Run ⚙️
 do git clone of the repository https://github.com/mayur-keswani/Google-Keep-Clone.git
 
