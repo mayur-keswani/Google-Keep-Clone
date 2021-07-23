@@ -15,6 +15,7 @@ Runs the app in the development mode.\ Open http://localhost:3000 to view it in 
 
 
 ## Assets 🔨
+react-quill
 react-icons
 axios
 uuid
@@ -22,6 +23,7 @@ uuid
  - Add/Delete/Update Notes
  - Add/Delete/Update Todos
  - Archieve - Unarchive Notes/Todos
+ - Format Notes using React-Quill Formatting Tools
  - Read RecentlyDeleted Notes even you can Restore them
  - Storing notes/deleted-notes/archived-notes on localStorage
  - Responsive layout 

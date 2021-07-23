@@ -84,7 +84,7 @@ const Archive:React.FC = () =>{
 				   			</div>
 							)
 					 	:
-						 note.content
+						<div dangerouslySetInnerHTML={{__html: note.content}}></div> 
 					 }
 					 </div>
 					<div className="note-footer">
