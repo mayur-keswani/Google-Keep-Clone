@@ -4,11 +4,11 @@ import './NavBar.css'
 import Logo from '../Logo/Logo'
 import Icons from '../Icons/Icons'
 
-const NavBar =({triggerSidedrawer})=>{
+const NavBar:React.FC <{triggerSidedrawer:()=>void}>=({triggerSidedrawer})=>{
 	return(
 		<div id="navbar">
-			<section id="menu" onClick={triggerSidedrawer}>
-				<Icons type="menu"/>
+			<section id="menu">
+				<button className="btn-menu"  onClick={()=>triggerSidedrawer()}><Icons type="menu"/></button>
 			</section>
 			<Logo/>
 			<section id="project-name"> Keep Clone </section>

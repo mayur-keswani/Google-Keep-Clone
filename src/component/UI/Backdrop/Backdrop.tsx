@@ -1,6 +1,6 @@
 import React from 'react'
 import './Backdrop.css'
-const Backdrop= () =>{
+const Backdrop:React.FC= () =>{
 	return(
 			<div className="backdrop">
 				

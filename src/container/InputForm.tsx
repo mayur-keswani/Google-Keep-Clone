@@ -1,27 +1,28 @@
-import React, { Fragment , useState ,useContext } from 'react'
+import React, { Fragment , useState ,useContext, FormEvent } from 'react'
 import Icons from '../component/UI/Icons/Icons'
 import './InputForm.css'
 // context-api stuff
 import NotesContext from '../context/NotesContext'
-import {ADD_NOTE} from '../context/NotesReducers/action.types'
+import {ActionType} from '../context/NotesReducers/action.types'
 
 import {v4} from 'uuid'
 
-const InputForm = () =>{
+const InputForm:React.FC = () =>{
 	// const TodoContext=useContext(TodoContext)
 
 	const [isNotesFormOpen,toggleNotesForm] = useState(false)
 	const [isTodoFormOpen,toggleTodoForm] = useState(false)
 
 	const [note,setNote]=useState({title:'',content:''})
-	const [todo,setTodo] = useState({title:"",tasks:[] })
+	const [todo,setTodo] = useState<{title:string,tasks:{id: string; isCompleted: boolean; task: string;}[]}>
+									({title:"",tasks:[] })
 	const [todoTask,setTodoTask] = useState("")
 	const [onAddingNewTodo,setNewTodo] = useState(false)
 
 	const notesContext=useContext(NotesContext)
 
 	const submitNoteHandler=()=>{
-		if(note.title || notesContext.content ){
+		if(note.title || note.content ){
 			let payload={
 				id:v4(),
 				criterion:"NOTE",
@@ -30,7 +31,7 @@ const InputForm = () =>{
 			}
 			
 			notesContext.dispatch({
-				type:ADD_NOTE,
+				type:ActionType.ADD_NOTE,
 				payload:payload
 			})
 		}
@@ -46,16 +47,21 @@ const InputForm = () =>{
 		// 	 {...todo,tasks:[...todo.tasks,payload]
 		// 	} 
 		// )
+		console.log(payload)
 		await setTodo(prevState=>
 		    {
-			   let tasks=prevState.tasks.concat(payload)
-			   return {...prevState,tasks}
+			    let content:{ id: string; isCompleted: boolean; task: string; }[]=[]
+				if(typeof prevState.tasks!=='string'){
+			    	content=prevState.tasks.concat(payload)
+					console.log(content)
+				}
+			   return {...prevState,tasks:content}
 			}
 		)	
 		setTodoTask("")
 	}
 
-	const submitTodoHandler= async(e)=>{
+	const submitTodoHandler= async(e :FormEvent)=>{
 		// await onAddTaskHandler()
 	
 		let tasks;
@@ -70,7 +76,7 @@ const InputForm = () =>{
 			content:tasks
 		}
 		notesContext.dispatch({
-			type:ADD_NOTE,
+			type:ActionType.ADD_NOTE,
 			payload:payload
 		})
 		setTodo({title:"",tasks:[]})
@@ -147,8 +153,8 @@ const InputForm = () =>{
 					}
 				   
 				<hr/>
-			<button onClick={()=>
-					submitTodoHandler()} className="btn-close" >Close</button>
+			<button onClick={(e)=>
+					submitTodoHandler(e)} className="btn-close" >Close</button>
 		  </div>
 
 		</div>

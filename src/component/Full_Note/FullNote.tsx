@@ -4,12 +4,18 @@ import Icons from '../UI/Icons/Icons';
 import {v4} from 'uuid'
 import './FullNote.css'
 // context-api stuff
-import NotesContext from '../../context/NotesContext'
-import { UPDATE_NOTE} from '../../context/NotesReducers/action.types'
+import NotesContext,{NoteType} from '../../context/NotesContext'
+import { ActionType} from '../../context/NotesReducers/action.types'
 
-const FullNote = (props) =>{
+type FullNotePropsType={
+	id:string,
+	offLoadFullNote:()=>void,
+	onTaskComplete:(id:string,elemID:string)=>void
+
+}
+const FullNote:React.FC <FullNotePropsType>= (props) =>{
  const notesContext=useContext(NotesContext);
- const [fullNote,setFullNote]=useState({id:'',criterion:'',title:"",content:""})
+ const [fullNote,setFullNote]=useState<NoteType>({id:'',criterion:'',title:"",content:""})
 //  const [todo , setTodo]=useState({title:"",tasks:[]})
  const [todoTask , setTodoTask] = useState("")
 
@@ -27,7 +33,7 @@ const FullNote = (props) =>{
 		}
    },[])
 
-   const updateNoteHandler = (id) =>{
+   const updateNoteHandler = (id:string) =>{
 	let updated_note={
 		id:id,
 		criterion:fullNote.criterion,
@@ -36,7 +42,7 @@ const FullNote = (props) =>{
 	}
 
 	notesContext.dispatch({
-		type:UPDATE_NOTE,
+		type:ActionType.UPDATE_NOTE,
 		payload:updated_note
 	})
 	props.offLoadFullNote();
@@ -45,8 +51,17 @@ const FullNote = (props) =>{
   const onAddTaskHandler = async () =>{
 	let payload={id:v4(),isCompleted:false,task:todoTask}	 
 	await setFullNote(prevState=>
-		{
-		   let tasks=prevState.content.concat(payload)
+		{ 
+		  let tasks:
+		   {
+			id: string;
+			isCompleted: boolean;
+			task: string;
+	  	   }[]=[]
+		  if(typeof prevState.content !=='string'){
+			tasks=prevState.content.concat(payload)
+		  }
+		   	
 		   console.log(tasks)
 		   return {...prevState,content:tasks}
 		}
@@ -55,23 +70,33 @@ const FullNote = (props) =>{
   }
 
   const updateTodoHandler= async()=>{
-	let tasks;
-	if(todoTask)
-		 tasks = [...fullNote.content,{id:v4(),isCompleted:false,task:todoTask}]
-	else
-		 tasks= [...fullNote.content]
+	if(typeof fullNote.content!=='string'){
+		let tasks:
+		{id: string;
+			isCompleted: boolean;
+			task: string;
+		}[] | string;
+		if(todoTask )
+			 tasks = [...fullNote.content,{id:v4(),isCompleted:false,task:todoTask}]
+	
+		else
+			 tasks= [...fullNote.content]
 
-	let payload={
-		id:fullNote.id,
-		criterion:fullNote.criterion,
-		title:fullNote.title,
-		content:tasks
+		let payload={
+				id:fullNote.id,
+				criterion:fullNote.criterion,
+				title:fullNote.title,
+				content:tasks
+			}
+		notesContext.dispatch({
+				type:ActionType.UPDATE_NOTE,
+				payload:payload
+			})
 	}
 	
-	notesContext.dispatch({
-		type:UPDATE_NOTE,
-		payload:payload
-	})
+
+	
+	
 	props.offLoadFullNote();
 }
 
@@ -84,7 +109,7 @@ const FullNote = (props) =>{
 			  	 onChange={(event)=> setFullNote({...fullNote,title:event.target.value})}></input>
 			<div  className="content-section">
 			  {
-				  fullNote.criterion==="TODO"
+				  typeof fullNote.content !=="string"
 				  ?	
 				  	<>
 				  		{fullNote.content.map(elem=>
@@ -95,15 +120,14 @@ const FullNote = (props) =>{
 										<Icons type={elem.isCompleted?"check":"uncheck"}/>
 								</span>
 								
-								<span className="todo_content" 
-									readOnly 
+								<span className="todo_content"  
 									style={{textDecoration:(elem.isCompleted)?"line-through":"none"}}>
 									{elem.task}
 								</span>	
 
 				   			</div>
 						)}
-							<hr width="95%" style={{borderWidth:"1px",margin:"auto"}}></hr>
+							<hr style={{borderWidth:"1px",margin:"auto"}}></hr>
 							<div className="todo_task" style={{marginTop:'1rem'}}>  
 				   				<span className="task-add" 
 								   onClick={onAddTaskHandler}>
@@ -131,7 +155,7 @@ const FullNote = (props) =>{
 				
 			  <button onClick={()=>
 			  	 fullNote.criterion==="TODO" ?
-					updateTodoHandler(fullNote.id) :
+					updateTodoHandler() :
 					updateNoteHandler(fullNote.id)
 				} 
 				className="btn-update">Update

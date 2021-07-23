@@ -3,11 +3,12 @@ import { NavLink } from 'react-router-dom'
 import Icons from '../Icons/Icons'
 import './Sidedrawer.css'
 
-const Sidedrawer = ({show,triggerSidedrawer}) =>{
+const Sidedrawer:React.FC <{show:boolean}>= (props) =>{
+	console.log(props.show)
 	return(
 		<Fragment>
-			<div className="sidedrawer" style={{display:show?"block":'none', transition:".40s ease-in-out",
-				transform:show?"translateY(0)":"translateY(-100vh)" }}>
+			<div className="sidedrawer" style={{visibility:(props.show)?"visible":"hidden", transition:".40s ease-in-out",
+				}}>
 				<NavLink to="/">
 					<span className="btn-notes">
 						<Icons type="notes"></Icons>

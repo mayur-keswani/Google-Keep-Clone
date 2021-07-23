@@ -1,24 +1,22 @@
-import {ADD_NOTE, 
-		UPDATE_NOTE ,
-		ADD_PREV_NOTES ,
-		REMOVE_NOTE
-	} from './action.types'
+import { ActionType } from "./action.types"
+import { NoteAction } from "./action.types"
+import {NoteType} from '../NotesContext'
 
- const  Reducer = (state,action) =>{
+ const  Reducer = (state:NoteType[],action:NoteAction) =>{
 
 	switch (action.type) {
-		case ADD_NOTE:{
+		case ActionType.ADD_NOTE:{
 			localStorage.setItem("notes",JSON.stringify([...state,action.payload]))
 			return [...state,action.payload]
 		}
 			
-		case REMOVE_NOTE:{
+		case ActionType.REMOVE_NOTE:{
 			let updatedState= state.filter(todo=> todo.id.toString() !== action.payload.id.toString() )
 			localStorage.setItem("notes",JSON.stringify(updatedState))
 			return updatedState;
 		}	 
 			
-		case UPDATE_NOTE:{
+		case ActionType.UPDATE_NOTE:{
 			
 			 let updatingState={...state};
 			let updatingNoteIndex=state.findIndex(todo=>{ return todo.id.toString() === action.payload.id})
@@ -29,7 +27,7 @@ import {ADD_NOTE,
 			return state
 		}
 
-		case ADD_PREV_NOTES:{
+		case ActionType.ADD_PREV_NOTES:{
 			return [...state,...action.payload]
 		}
 		default:

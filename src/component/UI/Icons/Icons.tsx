@@ -5,11 +5,11 @@ import {RiDeleteBin6Line , RiInboxArchiveLine , RiInboxUnarchiveLine , RiDeleteB
 import {FaTrashRestoreAlt , FaRegCheckSquare } from 'react-icons/fa'
 import {MdAdd} from 'react-icons/md'
 
-const Icons = (props) =>{
+const Icons:React.FC<{type:string}>= (props) =>{
 	let icon=null;
 	switch (props.type) {
 		case "menu":
-			icon=(<button className="btn-menu"><AiOutlineMenu/></button>)	
+			icon=(<AiOutlineMenu />)	
 			break;
 
 		case "search":
@@ -23,15 +23,15 @@ const Icons = (props) =>{
 			break;
 		}
 		case "notes":{
-			icon=(<AiOutlineBulb/>);
+			icon=(<AiOutlineBulb />);
 			break;
 		}
 		case "bin":{
-			icon=(<RiDeleteBin6Line/>)
+			icon=(<RiDeleteBin6Line />)
 			break;
 		}
 		case "archive":{
-			icon=(<RiInboxArchiveLine/>)
+			icon=(<RiInboxArchiveLine />)
 			break;
 		}
 		case "pin":{

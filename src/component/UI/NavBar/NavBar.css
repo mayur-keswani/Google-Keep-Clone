@@ -16,6 +16,9 @@
 	/* box-sizing: border-box; */
 
 }
+#menu{
+	cursor: pointer;
+}
 .btn-menu{
 	background-color: #fff;
 	width: 40px;
