@@ -6,6 +6,7 @@ import './FullNote.css'
 // context-api stuff
 import NotesContext,{NoteType} from '../../context/NotesContext'
 import { ActionType} from '../../context/NotesReducers/action.types'
+import Editor from '../UI/Editor/Editor';
 
 type FullNotePropsType={
 	id:string,
@@ -14,9 +15,10 @@ type FullNotePropsType={
 
 }
 const FullNote:React.FC <FullNotePropsType>= (props) =>{
+
  const notesContext=useContext(NotesContext);
  const [fullNote,setFullNote]=useState<NoteType>({id:'',criterion:'',title:"",content:""})
-//  const [todo , setTodo]=useState({title:"",tasks:[]})
+ const [formatedNote,setFormatedNote] = useState("")
  const [todoTask , setTodoTask] = useState("")
 
    useEffect(()=>{
@@ -24,29 +26,43 @@ const FullNote:React.FC <FullNotePropsType>= (props) =>{
 		{
 			let updatingNoteIndex=notesContext.todos.findIndex(note=> note.id.toString() === props.id);
 			let updatingNote={...notesContext.todos[updatingNoteIndex]};
+			
 			setFullNote({
 				id:updatingNote.id,
 				criterion: updatingNote.criterion,
 				title:updatingNote.title ,
 				content:updatingNote.content
 			});
+
+			if(typeof updatingNote.content ==='string')
+				setFormatedNote(updatingNote.content)
 		}
    },[])
 
    const updateNoteHandler = (id:string) =>{
-	let updated_note={
-		id:id,
-		criterion:fullNote.criterion,
-		title:fullNote.title,
-		content:fullNote.content
-	}
+	  
+			let updated_note={
+				id:id,
+				criterion:fullNote.criterion,
+				title:fullNote.title,
+				content:formatedNote
+			}
+			console.log(updated_note)
+			notesContext.dispatch({
+				type:ActionType.UPDATE_NOTE,
+				payload:updated_note
+			})
 
-	notesContext.dispatch({
-		type:ActionType.UPDATE_NOTE,
-		payload:updated_note
-	})
-	props.offLoadFullNote();
+			// setFullNote({
+			// 	id:"",
+			// 	criterion: "",
+			// 	title:"",
+			// 	content:""
+			// });
+		props.offLoadFullNote();
    }
+
+
 
   const onAddTaskHandler = async () =>{
 	let payload={id:v4(),isCompleted:false,task:todoTask}	 
@@ -94,13 +110,10 @@ const FullNote:React.FC <FullNotePropsType>= (props) =>{
 			})
 	}
 	
-
-	
-	
 	props.offLoadFullNote();
 }
 
-	
+ 
 	return (
 		<Fragment>
 			<Backdrop/>
@@ -138,18 +151,14 @@ const FullNote:React.FC <FullNotePropsType>= (props) =>{
 									onChange={(e)=>setTodoTask(e.target.value)}
 				  		 			className="todo_content" 
 								 	placeholder="list item"
-				  		 			
+								
 						 		/>  			 
 				   			</div>	
 
 						</>
 				  :
-				  (
-					<textarea className="noteContent"
-			  			value={fullNote.content}
-						onChange={(event)=> setFullNote({...fullNote,content:event.target.value}) }>		
-			  		</textarea>
-				  )
+				  
+				  <Editor content={formatedNote} EditContentHandler={(value)=>setFormatedNote(value) }/>	
 			  }
 			  </div>
 				

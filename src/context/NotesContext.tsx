@@ -4,7 +4,7 @@ export type NoteType={
 	id:string,
 	criterion:string,
 	title:string,
-	content:string | ({id:string,isCompleted:boolean,task:string}[])
+	content:string | ({id:string,isCompleted:boolean,task:string}[]) 
  }
 export type initialInterface = {
 	 todos:NoteType[],

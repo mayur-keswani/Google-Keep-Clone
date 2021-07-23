@@ -78,7 +78,7 @@ const Notes:React.FC = () =>{
 	let notes:any=(<h2>No Notes Yet</h2>)
 	notes=notesContext.todos.map(note=>{
 		return  (<div className="note-box" key={note.id.toString()}>
-					<div className="note-title"><h4>{note.title}</h4></div>
+					<div className="note-title">{note.title}</div>
 					<button className="btn-pin" onClick={()=>archiveNote(note.id)}><Icons type="archive"/></button>
 					 <span className="tooltiptext">Archieve</span>
 					 <div className="note-content">
@@ -98,7 +98,7 @@ const Notes:React.FC = () =>{
 				   			</div>	
 						 )
 						:
-						note.content
+						<div dangerouslySetInnerHTML={{__html: note.content}}></div> 
 					} 
 					</div>
 					

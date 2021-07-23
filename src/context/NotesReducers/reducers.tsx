@@ -22,6 +22,8 @@ import {NoteType} from '../NotesContext'
 			let updatingNoteIndex=state.findIndex(todo=>{ return todo.id.toString() === action.payload.id})
 			let updatingNote={...updatingState[updatingNoteIndex]};
 			updatingNote={...action.payload}
+			console.log(action.payload)
+			console.log(updatingNote)
 			state[updatingNoteIndex]=updatingNote;
 			localStorage.setItem("notes",JSON.stringify(state))
 			return state
