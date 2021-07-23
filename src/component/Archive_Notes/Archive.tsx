@@ -4,64 +4,71 @@ import './Archive.css'
 // import '../Notes/Notes.css'
 // context-api stuff
 import NotesContext from '../../context/NotesContext'
-import { ADD_NOTE, REMOVE_NOTE , UPDATE_NOTE} from '../../context/NotesReducers/action.types'
+import { ActionType} from '../../context/NotesReducers/action.types'
 import { useHistory } from 'react-router'
 
-const Archive = () =>{
+
+const Archive:React.FC = () =>{
 	const notesContext = useContext(NotesContext)
 	const history = useHistory()
 		
-	const deleteNoteHandler = (id) =>{
+	const deleteNoteHandler:(id:string)=>void = (id) =>{
 		let deletingNote=notesContext.archivedNotes.filter(note=> note.id.toString() === id.toString())
 		notesContext.archiveDispatch({
-			type:REMOVE_NOTE,
+			type:ActionType.REMOVE_NOTE,
 			payload:deletingNote[0]
 		})
 		notesContext.trashDispatch({
-			type:ADD_NOTE,
+			type:ActionType.ADD_NOTE,
 			payload:deletingNote[0]
 		})
 
 	}
 
-	const unarchiveHandler= (id) =>{
+	const unarchiveHandler= (id:string) =>{
 		let unarchivingNote=notesContext.archivedNotes.filter(note=> note.id.toString() === id.toString());
 		notesContext.dispatch({
-			type:ADD_NOTE,
+			type:ActionType.ADD_NOTE,
 			payload:unarchivingNote[0]
 		})
 		notesContext.archiveDispatch({
-			type:REMOVE_NOTE,
+			type:ActionType.REMOVE_NOTE,
 			payload:unarchivingNote[0]
 		})
 	}
 
-	const onTaskComplete = (todoID , taskID ) =>{
+	const onTaskComplete = (todoID:string , taskID:string ) =>{
 		let updatingTodoIndex=notesContext.archivedNotes.findIndex(todo=> todo.id.toString()===todoID.toString())
 		let updatingTodo={...notesContext.archivedNotes[updatingTodoIndex]}
-		let updatedTodo=updatingTodo.content.map((task)=>{
-			if(task.id.toString()===taskID.toString()){
-				task.isCompleted=!task.isCompleted;
-				return task
-			}else{
-				return task
-			}
-		})
-		notesContext.archiveDispatch({
-			type:UPDATE_NOTE,
-			payload:updatedTodo
-		})
+		if(typeof updatingTodo.content!== 'string'){
+			let updatedTodoContent=updatingTodo.content.map((task)=>{
+				if(task.id.toString()===taskID.toString()){
+					task.isCompleted=!task.isCompleted;
+					return task
+				}else{
+					return task
+				}
+				
+			})
+			updatingTodo.content=updatedTodoContent
+			notesContext.archiveDispatch({
+				type:ActionType.UPDATE_NOTE,
+				payload:updatingTodo
+			})
+		}
+
+		
 		history.push('/archive')
 	}
 	
-	let notes=(<h2>No Notes Yet</h2>)
+	let notes :any=(<h2>No Notes Yet</h2>)
 	notes=notesContext.archivedNotes.map(note=>{
 		return  (<div className="note-box" key="note.id">
 					<div className="note-title"><h4>{note.title}</h4></div>
 					<button className="btn-unarchive" onClick={()=>unarchiveHandler(note.id)}><Icons type="unarchive"/></button>
 					<span className="tooltiptext">Unarchieve</span>
 					<div className="note-content">
-					{(note.criterion==="TODO")
+					{(typeof note.content!== 'string')
 					 	? 
 						 note.content.map(elem=>
 							<div className="todo_task" key={elem.id}>  
@@ -69,8 +76,7 @@ const Archive = () =>{
 									onClick={()=>onTaskComplete(note.id,elem.id)}>
 									<Icons type={elem.isCompleted?"check":"uncheck"}/>
 								</span>	
-								<span className="todo_content" 
-									readOnly 
+								<span className="todo_content"  
 									style={{textDecoration:(elem.isCompleted)?"line-through":"none"}}>
 									{elem.task}
 								</span>				 	

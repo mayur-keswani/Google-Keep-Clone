@@ -3,38 +3,38 @@ import Icons from '../UI/Icons/Icons'
 import './Bin.css'
 // context-api stuff
 import NotesContext from '../../context/NotesContext'
-import { ADD_NOTE, REMOVE_NOTE } from '../../context/NotesReducers/action.types'
+import {ActionType} from '../../context/NotesReducers/action.types'
 
-const Bin = () =>{
+const Bin:React.FC = () =>{
 	const notesContext = useContext(NotesContext);
 
-	const deleteNoteHandler = (id) =>{
+	const deleteNoteHandler = (id:string) =>{
 		let deletingNote=notesContext.deletedNotes.filter(note=> note.id.toString() === id.toString())
 		notesContext.trashDispatch({
-			type:REMOVE_NOTE,
+			type:ActionType.REMOVE_NOTE,
 			payload:deletingNote[0]
 		})
 
 	}
-	const restoreNoteHandler = (id) =>{
+	const restoreNoteHandler = (id:string) =>{
 		let restoringNote=notesContext.deletedNotes.filter(note=> note.id.toString() === id.toString())
 		notesContext.dispatch({
-			type:ADD_NOTE,
+			type:ActionType.ADD_NOTE,
 			payload:restoringNote[0]
 		})
 		notesContext.trashDispatch({
-			type:REMOVE_NOTE,
+			type:ActionType.REMOVE_NOTE,
 			payload:restoringNote[0]
 		})
 	}
 	// console.log(notesContext.deletedNotes)
-	let notes=(<h2>No Notes Yet</h2>)
+	let notes:any=(<h2>No Notes Yet</h2>)
 	
 	notes=notesContext.deletedNotes.map(note=>{
 		return  (<div className="note-box" key="note.id">
 					<div className="note-title"><h4>{note.title}</h4></div>
 					<div className="note-content" >		
-					 {(note.criterion==="TODO")
+					 {(typeof note.content!=='string')
 					 	? 
 						 note.content.map(elem=>
 							<div className="todo_task" key={elem.id}>  
